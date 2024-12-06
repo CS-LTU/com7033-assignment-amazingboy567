@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register a New Patient</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.name.label }} {{ form.name() }}
+        {% for error in form.name.errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.age.label }} {{ form.age() }}
+        {% for error in form.age.errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.gender.label }} {{ form.gender() }}
+    </div>
+    <div>
+        {{ form.hypertension.label }} {{ form.hypertension() }}
+    </div>
+    <div>
+        {{ form.heart_disease.label }} {{ form.heart_disease() }}
+    </div>
+    <div>
+        {{ form.stroke.label }} {{ form.stroke() }}
+    </div>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
