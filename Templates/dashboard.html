@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+    <h1>Patient Records</h1>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <table border="1">
+        <tr>
+            {% for key in patients[0].keys() %}
+                <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            {% for value in patient.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
