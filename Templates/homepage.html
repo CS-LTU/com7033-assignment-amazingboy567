@@ -1,9 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head><title>Welcome</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Prediction App</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .main-box {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .main-box h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+        .main-box p {
+            font-size: 1.8rem;
+            color: #555;
+        }
+    </style>
+</head>
 <body>
-    <h1>Welcome to the Secure Patient App</h1>
-    <a href="{{ url_for('registration') }}">registration</a> |
-    <a href="{{ url_for('login') }}">Login</a>
+    <div class="container main-box">
+        <h1>Welcome to the Stroke Prediction App</h1>
+        <p>Log in to see registration data, medical data & lifestyle factors.</p>
+        <div class="mt-4">
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-3">Login</a>
+            <a href="{{ url_for('registration') }}" class="btn btn-outline-secondary btn-lg">Register</a>
+        </div>
+    </div>
 </body>
 </html>

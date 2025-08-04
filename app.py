@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Email, Length
+from wtforms.validators import InputRequired, Email, Length, EqualTo
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 import pandas as pd
@@ -30,9 +30,13 @@ class User(db.Model):
 #registration form for new users and login form for existing users
 class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email()])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=6)])
-    submit = SubmitField('Registration')
-
+    password = PasswordField('Password', validators=[
+        InputRequired(), Length(min=6)
+    ])
+    confirm_password = PasswordField('Confirm Password', validators=[
+        InputRequired(), EqualTo('password', message="Passwords must match.")
+    ])
+    submit = SubmitField('Register')
 #login form for existing users
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email()])
